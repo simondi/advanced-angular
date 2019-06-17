@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { Book } from "app/models/book";
 import { Reader } from "app/models/reader";
-import { DataService } from 'app/core/data.service';
+import { DataService } from 'app/services/data.service';
 import { BookTrackerError } from 'app/models/bookTrackerError';
 
 @Component({

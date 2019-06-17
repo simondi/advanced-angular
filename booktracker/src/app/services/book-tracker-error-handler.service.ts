@@ -1,7 +1,9 @@
 import { Injectable, ErrorHandler } from '@angular/core';
 import { BookTrackerError } from 'app/models/bookTrackerError';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class BookTrackerErrorHandlerService implements ErrorHandler {
 
   handleError(error: any): void {

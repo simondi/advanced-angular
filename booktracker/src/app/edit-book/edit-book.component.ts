@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { Book } from 'app/models/book';
-import { DataService } from 'app/core/data.service';
+import { DataService } from 'app/services/data.service';
 import { OldBook } from 'app/models/oldBook';
 
 @Component({
