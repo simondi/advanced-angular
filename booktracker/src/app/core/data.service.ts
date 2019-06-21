@@ -62,8 +62,7 @@ export class DataService {
         map(b => <OldBook>{
           bookTitle: b.title,
           year: b.publicationYear
-        }),
-        tap(classicBook => console.log(classicBook))
+        })
       )
   }
 
