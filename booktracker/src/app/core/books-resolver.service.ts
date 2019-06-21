@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { Book } from 'app/models/book';
-import { DataService } from 'app/services/data.service';
+import { DataService } from 'app/core/data.service';
 import { BookTrackerError } from 'app/models/bookTrackerError';
 
 @Injectable({
