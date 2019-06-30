@@ -1,5 +1,5 @@
 import { Injectable, ErrorHandler } from '@angular/core';
-import { BookTrackerError } from 'app/models/bookTrackerError';
+import { BookTrackerError } from 'src/app/models/bookTrackerError';
 
 @Injectable({
   providedIn: 'root'

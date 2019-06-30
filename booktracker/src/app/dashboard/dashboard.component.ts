@@ -3,10 +3,10 @@ import { Observable } from 'rxjs';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 
-import { Book } from "app/models/book";
-import { Reader } from "app/models/reader";
-import { DataService } from 'app/core/data.service';
-import { BookTrackerError } from 'app/models/bookTrackerError';
+import { Book } from "src/app/models/book";
+import { Reader } from "src/app/models/reader";
+import { DataService } from 'src/app/core/data.service';
+import { BookTrackerError } from 'src/app/models/bookTrackerError';
 
 @Component({
   selector: 'app-dashboard',

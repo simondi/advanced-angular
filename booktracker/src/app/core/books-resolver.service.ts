@@ -3,9 +3,9 @@ import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/r
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { Book } from 'app/models/book';
-import { DataService } from 'app/core/data.service';
-import { BookTrackerError } from 'app/models/bookTrackerError';
+import { Book } from 'src/app/models/book';
+import { DataService } from 'src/app/core/data.service';
+import { BookTrackerError } from 'src/app/models/bookTrackerError';
 
 @Injectable({
   providedIn: 'root'

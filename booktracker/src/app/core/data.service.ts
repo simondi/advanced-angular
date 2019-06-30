@@ -3,11 +3,11 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Observable, throwError } from 'rxjs';
 import { map, tap, catchError } from 'rxjs/operators';
 
-import { allBooks, allReaders } from 'app/data';
-import { Reader } from "app/models/reader";
-import { Book } from "app/models/book";
-import { BookTrackerError } from 'app/models/bookTrackerError';
-import { OldBook } from 'app/models/oldBook';
+import { allBooks, allReaders } from 'src/app/data';
+import { Reader } from "src/app/models/reader";
+import { Book } from "src/app/models/book";
+import { BookTrackerError } from 'src/app/models/bookTrackerError';
+import { OldBook } from 'src/app/models/oldBook';
 
 @Injectable({
   providedIn: 'root'
