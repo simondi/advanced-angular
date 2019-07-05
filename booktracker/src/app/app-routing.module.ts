@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AddBookComponent } from "src/app/add-book/add-book.component";
+import { AddBookComponent } from "src/app/books/add-book/add-book.component";
 import { AddReaderComponent } from "src/app/add-reader/add-reader.component";
 import { DashboardComponent } from "src/app/dashboard/dashboard.component";
-import { EditBookComponent } from "src/app/edit-book/edit-book.component";
+import { EditBookComponent } from "src/app/books/edit-book/edit-book.component";
 import { EditReaderComponent } from "src/app/edit-reader/edit-reader.component";
 import { BooksResolverService } from './core/books-resolver.service';
 
