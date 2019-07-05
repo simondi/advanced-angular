@@ -10,6 +10,7 @@ import { BooksModule } from './books/books.module';
 import { BookLibraryModule } from 'book-library';
 import { ReadersModule } from './readers/readers.module';
 import { SharedModule } from './shared/shared.module';
+import { ReaderLibraryModule } from 'reader-library';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { SharedModule } from './shared/shared.module';
     BooksModule,
     BookLibraryModule,
     ReadersModule,
-    SharedModule
+    SharedModule,
+    ReaderLibraryModule
   ],
   bootstrap: [AppComponent]
 })

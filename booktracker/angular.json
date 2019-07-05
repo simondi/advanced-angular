@@ -151,6 +151,41 @@
           }
         }
       }
+    },
+    "reader-library": {
+      "projectType": "library",
+      "root": "projects/reader-library",
+      "sourceRoot": "projects/reader-library/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/reader-library/tsconfig.lib.json",
+            "project": "projects/reader-library/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/reader-library/src/test.ts",
+            "tsConfig": "projects/reader-library/tsconfig.spec.json",
+            "karmaConfig": "projects/reader-library/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/reader-library/tsconfig.lib.json",
+              "projects/reader-library/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }},
   "defaultProject": "booktracker"
 }
