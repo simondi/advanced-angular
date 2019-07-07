@@ -6,10 +6,9 @@ import { AddReaderComponent } from "src/app/readers/add-reader/add-reader.compon
 import { DashboardComponent } from "src/app/dashboard/dashboard.component";
 import { EditBookComponent } from "src/app/books/edit-book/edit-book.component";
 import { EditReaderComponent } from "src/app/readers/edit-reader/edit-reader.component";
-import { BooksResolverService } from './core/books-resolver.service';
 
 const routes: Routes = [
-  { path: 'dashboard', component: DashboardComponent, resolve: {resolvedBooks: BooksResolverService} },
+  { path: 'dashboard', component: DashboardComponent },
   { path: 'addbook', component: AddBookComponent },
   { path: 'addreader', component: AddReaderComponent },
   { path: 'editreader/:id', component: EditReaderComponent },
