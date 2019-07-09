@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Title } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
 
 import { Book } from "src/app/models/book";
 import { Reader } from "src/app/models/reader";
 import { DataService } from 'src/app/core/data.service';
-import { BookTrackerError } from 'src/app/models/bookTrackerError';
 
 @Component({
   selector: 'app-dashboard',
