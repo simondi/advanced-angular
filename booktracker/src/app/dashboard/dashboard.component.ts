@@ -1,34 +1,45 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Title } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
 
 import { Book } from "src/app/models/book";
 import { Reader } from "src/app/models/reader";
 import { DataService } from 'src/app/core/data.service';
-import { BookTrackerError } from 'src/app/models/bookTrackerError';
+import { logNewerBooks } from '../core/book_tracker_operators';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styles: []
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
 
   allBooks: Book[];
   allReaders: Reader[];
   mostPopularBook: Book;
+  bookSubscription: Subscription;
 
   constructor(private dataService: DataService,
               private title: Title) { }
   
   ngOnInit() {
 
-    this.allBooks = this.dataService.getAllBooks();
+    this.bookSubscription = this.dataService.getAllBooks()
+      .pipe(
+        logNewerBooks(1950)
+      )
+      .subscribe(
+        books => this.allBooks = books
+      );
+    
     this.allReaders = this.dataService.getAllReaders();
     this.mostPopularBook = this.dataService.mostPopularBook;
 
     this.title.setTitle(`Book Tracker`);
+  }
+
+  ngOnDestroy(): void {
+    this.bookSubscription.unsubscribe();
   }
 
   deleteBook(bookID: number): void {
