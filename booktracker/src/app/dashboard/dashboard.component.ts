@@ -19,20 +19,11 @@ export class DashboardComponent implements OnInit {
   mostPopularBook: Book;
 
   constructor(private dataService: DataService,
-              private title: Title,
-              private route: ActivatedRoute) { }
+              private title: Title) { }
   
   ngOnInit() {
 
-    let resolvedData: Book[] | BookTrackerError = this.route.snapshot.data['resolvedBooks'];
-
-    if (resolvedData instanceof BookTrackerError) {
-      console.log(`Dashboard component error: ${resolvedData.friendlyMessage}`);
-    }
-    else {
-      this.allBooks = resolvedData;
-    }    
-
+    this.allBooks = this.dataService.getAllBooks();
     this.allReaders = this.dataService.getAllReaders();
     this.mostPopularBook = this.dataService.mostPopularBook;
 
