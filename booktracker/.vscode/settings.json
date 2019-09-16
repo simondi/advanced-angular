@@ -16,14 +16,14 @@
   },
 
   "editor.fontFamily": "Roboto Mono",
-  "editor.fontSize": 16,
+  "editor.fontSize": 20,
   "editor.quickSuggestions": true,
-  "editor.parameterHints.enabled": false,
-  "editor.wordBasedSuggestions": false,
-  "editor.selectionHighlight": false,
+  "editor.parameterHints.enabled": true,
+  "editor.wordBasedSuggestions": true,
+  "editor.selectionHighlight": true,
   "editor.suggestOnTriggerCharacters": true,
 
-  "problems.decorations.enabled": false,
+  "problems.decorations.enabled": true,
 
   "window.zoomLevel": 0,
   
