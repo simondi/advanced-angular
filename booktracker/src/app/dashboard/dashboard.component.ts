@@ -17,6 +17,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   allBooks: Book[];
   allReaders: Reader[];
   mostPopularBook: Book;
+  readerOfTheMonth: Reader;
   readerSubscription: Subscription;
 
   constructor(private dataService: DataService,
@@ -35,6 +36,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       );
 
     this.mostPopularBook = this.dataService.mostPopularBook;
+    this.readerOfTheMonth = this.dataService.readerOfTheMonth;
 
     this.title.setTitle(`Book Tracker`);
   }

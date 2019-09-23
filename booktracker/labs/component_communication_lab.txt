@@ -1,0 +1,23 @@
+Sharing Data with a Service
+---------------------------
+
+Implement a new "Reader of the Month" feature similar to the current "Favorite Book" feature.
+
+	1. Add a new property on the existing data service to store the current "Reader of the Month".
+  2. Add a method to the data service to set a new "Reader of the Month".
+  3. Add a new property to the DashboardComponent to store the "Reader of the Month". Initialize it when the component loads.
+  4. Create a new section on the DashboardComponent template to display the "Reader of the Month".
+  5. Add a button to the EditReader template that will call a method on the component to set the current reader as the "Reader of the Month" on the data service.
+  6. Run the app and verify that changing the current "Reader of the Month" is reflected on the dashboard.
+
+
+Communicating Using @Input and @Output
+--------------------------------------
+
+	1. 
+
+
+Creating a Pub/Sub Service with Subjects
+----------------------------------------
+
+	1. 

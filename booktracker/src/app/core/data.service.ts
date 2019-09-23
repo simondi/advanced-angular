@@ -17,9 +17,14 @@ export class DataService {
   constructor(private http: HttpClient) { }
 
   mostPopularBook: Book = allBooks[0];
+  readerOfTheMonth: Reader = allReaders[0];
 
   setMostPopularBook(popularBook: Book): void {
     this.mostPopularBook = popularBook;
+  }
+
+  setReaderOfTheMonth(goodReader: Reader): void {
+    this.readerOfTheMonth = goodReader;
   }
 
   getAllReaders(): Observable<Reader[]> {

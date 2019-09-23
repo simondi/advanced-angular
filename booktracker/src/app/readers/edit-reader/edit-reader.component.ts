@@ -29,4 +29,8 @@ export class EditReaderComponent implements OnInit {
   saveChanges() {
     console.warn('Save reader not yet implemented.');
   }
+
+  setReaderOfTheMonth() {
+    this.dataService.setReaderOfTheMonth(this.selectedReader);
+  }
 }
