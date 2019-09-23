@@ -29,4 +29,19 @@ Add a new "Librarian" property to the InventoryComponent that can be passed in b
 Creating a Pub/Sub Service with Subjects
 ----------------------------------------
 
-	1. 
+Create an ActivityLog service that can receive and broadcast various activities that happen in the app (e.g. a book was edited, a new reader was added, etc.). Also create a new ActivityLogComponent that can subscribe to the activity feed and keep a list of them on the screen at all times.
+
+	1. Create an ActivityLogService containing a private Subject property that's exposed with a separate public Observable property.
+  2. Add a method to the service named "logActivity" that will take a string parameter and produce it from the private Subject.
+  3. Create a new ActivityLogComponent with a public property to store an array of activities (strings).
+  4. Inject the ActivityLogService into the ActivityLogComponent constructor and subscribe to the Observable of activities exposed on the service.
+  5. Create a simple template for the new component that uses *ngFor to display all of the activities stored in the component's property.
+  6. Add the selector for the new component to the AppComponent template just below the <router-outlet> so that the log will always be on the screen.
+  7. Inject the ActivityLogService into the AppComponent constructor.
+  8. Add a new function to the AppComponent that will pass activities to the "logActivity" method on the ActivityLogService.
+  9. Add "click" event handlers to the "Add Book" and "Add Reader" links in the AppComponent template that will call the new function passing and appropriate "activity" to the ActivityLogService (e.g. "Book Added").
+  10. Inject the ActivityLogService into the DashboardComponent constructor.
+  11. Add a new function to the DashboardComponent that will pass activities to the "logActivity" method on the ActivityLogService.
+  12. Add "click" event handlers to the "Edit Book" and "Edit Reader" links in the DashboardComponent template that will call the new function passing and appropriate "activity" to the ActivityLogService including the name of the book or reader being edited.
+  13. Run and test the app to verify that activities are correctly logged to the new component.
+  14. BONUS - Find other places in the app to log additional acitivity types.

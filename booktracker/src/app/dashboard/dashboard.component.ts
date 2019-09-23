@@ -6,6 +6,7 @@ import { Reader } from "src/app/models/reader";
 import { DataService } from 'src/app/core/data.service';
 import { Subscription } from 'rxjs';
 import { logEagerReaders } from '../core/book_tracker_operators';
+import { ActivityLogService } from '../core/activity-log.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -21,7 +22,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
   readerSubscription: Subscription;
 
   constructor(private dataService: DataService,
-              private title: Title) { }
+              private title: Title,
+              private activityService: ActivityLogService) { }
   
   ngOnInit() {
 
@@ -58,6 +60,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   deleteReader(readerID: number): void {
     console.warn(`Delete reader not yet implemented (readerID: ${readerID}).`);
+  }
+
+  logActivity(activity: string) {
+    this.activityService.logActivity(activity);
   }
 
 }

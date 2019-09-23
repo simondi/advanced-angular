@@ -13,13 +13,15 @@ import { SharedModule } from './shared/shared.module';
 import { ReaderLibraryModule } from 'reader-library';
 import { LibraryComponent } from './library/library.component';
 import { InventoryComponent } from './inventory/inventory.component';
+import { ActivityLogComponent } from './activity-log/activity-log.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     LibraryComponent,
-    InventoryComponent
+    InventoryComponent,
+    ActivityLogComponent
   ],
   imports: [
     BrowserModule,
