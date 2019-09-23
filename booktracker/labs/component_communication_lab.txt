@@ -14,7 +14,16 @@ Implement a new "Reader of the Month" feature similar to the current "Favorite B
 Communicating Using @Input and @Output
 --------------------------------------
 
-	1. 
+Add a new "Librarian" property to the InventoryComponent that can be passed in by a parent component. Also, implement a new "Decrease Inventory" feature similar to the existing "Increase Inventory" feature. The parent LibraryComponent should listen for decrease events and update its "totalBookCount" property accordingly.
+
+	1. Add a new property to the InventoryComponent named "branchLibrarian" to store the name of a librarian that may be passed to the component. Update the template to display the librarian name.
+  2. Add a new property to the InventoryComponent capable of emitting "decrease" events to parent components.
+  3. Add a new method to the InventoryComponent to emit "decrease" events.
+  4. Update the InventoryComponent template to include a button that will decrease the number of books.
+  5. Add a "branchLibrarian" property to the LibraryComponent and hard-code a value for it.
+  6. Write an event handler function in the LibraryComponent to handle "decrease" events.
+  7. Update the LibraryComponent template to pass the librarian to the child component and handle decrease events.
+  8. Run the app and verify that the new value is passed to the child component and "decrease" events are properly handled.
 
 
 Creating a Pub/Sub Service with Subjects

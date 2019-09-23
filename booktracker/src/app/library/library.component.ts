@@ -12,6 +12,7 @@ export class LibraryComponent implements OnInit {
   totalBookCount: number;
   allBooks: Book[];
   branch: string = 'Midtown';
+  branchLibrarian = 'Bookish Learner';
 
   constructor(private dataService: DataService) { }
 
@@ -24,4 +25,7 @@ export class LibraryComponent implements OnInit {
     this.totalBookCount += amount;
   }
 
+  onDecrease(amount: number) {
+    this.totalBookCount -= amount;
+  }
 }
