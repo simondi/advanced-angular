@@ -22,4 +22,32 @@ NgRx Lab
   9. Add a new folder named "state" to the "readers" feature folder.
   10. Create a new file in the "state" folder named "reader.reducer.ts".
   11. Create a new reducer function in the file with the following code:
-        
+        export function reducer(state, action) {
+          switch (action.type) {
+            case 'UPDATE_READER_OF_MONTH':
+              return {
+                ...state,
+                readerOfTheMonth: action.payload
+              }
+            default:
+              return state;
+          }
+        }
+  12. Open "readers.module.ts" and update the initialization of the readers store slice to include the reducer:
+        StoreModule.forFeature('readers', reducer)
+  13. Open "dashboard.component.ts" and import the store and "select" operator:
+        import { Store, select } from '@ngrx/store';
+  14. Declare a new property to store a new RxJS subscription:
+        readerOfTheMonthSubscription: Subscription;
+  15. Inject the store into the component's constructor with the following snippet:
+        private store: Store<any>
+  16. Replace the code in "ngOnInit" that sets the "readerOfTheMonth" with the following subscription:
+        	this.readerOfTheMonthSubscription = this.store.pipe(
+	          select('books')
+	        )
+	        .subscribe(
+	          books => this.mostPopularBook = books.favoriteBook
+          );
+  17. Unsubscribe from the Observable inside the "ngOnDestroy" method:
+        this.readerOfTheMonthSubscription.unsubscribe();
+  18. Run the app and verify that the "reader of month" is now being stored and retrieved with NgRx.
