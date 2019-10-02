@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -32,7 +33,8 @@ import { ActivityLogComponent } from './activity-log/activity-log.component';
     BookLibraryModule,
     ReadersModule,
     SharedModule,
-    ReaderLibraryModule
+    ReaderLibraryModule,
+    StoreModule.forRoot({})
   ],
   bootstrap: [AppComponent]
 })

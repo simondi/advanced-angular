@@ -1,6 +1,6 @@
 NgRx Lab
 
-	1. Use npm to install the NgRx store package.
+  1. Use npm to install the NgRx store package.
        npm install @ngrx/store --save
   2. Open "app.module.ts" and import the NgRx store.
        import { StoreModule } from '@ngrx/store';
@@ -11,7 +11,7 @@ NgRx Lab
   5. Initialize the "readers" slice of the store by adding the following to the reader module's "imports" array.
        StoreModule.forFeature('readers', {})
   6. Open "edit-reader.component.ts" and import the NgRx store.
-       import { StoreModule } from '@ngrx/store';
+       import { Store } from '@ngrx/store';
   7. Inject the store into the component constructor with the following snippet of code:
        private store: Store<any>
   8. Update the body of "setReaderOfTheMonth" to dispatch an NgRx action:
@@ -43,10 +43,10 @@ NgRx Lab
         private store: Store<any>
   16. Replace the code in "ngOnInit" that sets the "readerOfTheMonth" with the following subscription:
         	this.readerOfTheMonthSubscription = this.store.pipe(
-	          select('books')
+	          select('readers')
 	        )
 	        .subscribe(
-	          books => this.mostPopularBook = books.favoriteBook
+	          readers => this.readerOfTheMonth = readers.readerOfTheMonth
           );
   17. Unsubscribe from the Observable inside the "ngOnDestroy" method:
         this.readerOfTheMonthSubscription.unsubscribe();

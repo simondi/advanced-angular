@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { Store, select } from '@ngrx/store';
 
 import { Book } from "src/app/models/book";
 import { Reader } from "src/app/models/reader";
@@ -20,10 +21,12 @@ export class DashboardComponent implements OnInit, OnDestroy {
   mostPopularBook: Book;
   readerOfTheMonth: Reader;
   readerSubscription: Subscription;
+  readerOfTheMonthSubscription: Subscription;
 
   constructor(private dataService: DataService,
               private title: Title,
-              private activityService: ActivityLogService) { }
+              private activityService: ActivityLogService,
+              private store: Store<any>) { }
   
   ngOnInit() {
 
@@ -38,13 +41,21 @@ export class DashboardComponent implements OnInit, OnDestroy {
       );
 
     this.mostPopularBook = this.dataService.mostPopularBook;
-    this.readerOfTheMonth = this.dataService.readerOfTheMonth;
+    // this.readerOfTheMonth = this.dataService.readerOfTheMonth;
+
+    this.readerOfTheMonthSubscription = this.store.pipe(
+      select('readers')
+    )
+    .subscribe(
+      readers => this.readerOfTheMonth = readers.readerOfTheMonth
+    );
 
     this.title.setTitle(`Book Tracker`);
   }
 
   ngOnDestroy(): void {
     this.readerSubscription.unsubscribe();
+    this.readerOfTheMonthSubscription.unsubscribe();
   }
 
   deleteBook(bookID: number): void {
