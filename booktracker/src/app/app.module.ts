@@ -14,6 +14,9 @@ import { ReaderLibraryModule } from 'reader-library';
 import { LibraryComponent } from './library/library.component';
 import { InventoryComponent } from './inventory/inventory.component';
 import { ActivityLogComponent } from './activity-log/activity-log.component';
+import { LoggerService } from './core/logger.service';
+import { PlainLoggerService } from './core/plain-logger.service';
+import { LogUrlInterceptor } from './core/log-url.interceptor';
 
 @NgModule({
   declarations: [
@@ -33,6 +36,10 @@ import { ActivityLogComponent } from './activity-log/activity-log.component';
     ReadersModule,
     SharedModule,
     ReaderLibraryModule
+  ],
+  providers: [
+    { provide: LoggerService, useClass: PlainLoggerService },
+    { provide: HTTP_INTERCEPTORS, useClass: LogUrlInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })
