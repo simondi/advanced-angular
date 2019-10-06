@@ -25,4 +25,20 @@ Create an interceptor to log the URL of each HTTP request sent to the server.
 
   1. Create a new file in the "core" folder named "log-url.interceptor.ts".
   2. Add the following code to the file that will log to the browser console the URL of each server request.
-  
+        import { Injectable } from "@angular/core";
+        import { HttpInterceptor, HttpHandler, HttpRequest, HttpEvent } from "@angular/common/http";
+        import { Observable } from "rxjs";
+
+        @Injectable()
+        export class LogUrlInterceptor implements HttpInterceptor {
+
+          intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+            
+            console.log(req.url);
+
+            return next.handle(req);
+          }
+        }
+  3. Open "app.module.ts" and add the following entry to the "providers" array:
+        { provide: HTTP_INTERCEPTORS, useClass: LogUrlInterceptor, multi: true }
+  4. Run the app and verify that the the URL for the request to retrieve readers (/api/readers) was logged to the browser console.
