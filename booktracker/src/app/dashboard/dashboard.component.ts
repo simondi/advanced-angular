@@ -7,6 +7,7 @@ import { DataService } from 'src/app/core/data.service';
 import { Subscription } from 'rxjs';
 import { logEagerReaders } from '../core/book_tracker_operators';
 import { ActivityLogService } from '../core/activity-log.service';
+import { LoggerService } from '../core/logger.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -23,9 +24,12 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   constructor(private dataService: DataService,
               private title: Title,
-              private activityService: ActivityLogService) { }
+              private activityService: ActivityLogService,
+              private logger: LoggerService) { }
   
   ngOnInit() {
+
+    this.logger.log('Initializing the dashboard.');
 
     this.allBooks = this.dataService.getAllBooks();
 
