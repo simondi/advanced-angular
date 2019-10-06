@@ -1,0 +1,28 @@
+Providing Services Lab
+----------------------
+
+Provide the existing LoggerService in the root app module instead of with the @Injectable decorator
+and apply the "useClass" property so that an instance of PlainLogger is injected when a LoggerService
+is requested.
+
+  1. Open "logger.service.ts" from the "core" folder.
+  2. Remove the @Injectable decorator and the related "import" statement.
+  3. Open "app.module.ts" and add the following "providers" array to the "NgModule" decorator.
+       providers: [
+         { provide: LoggerService, useClass: PlainLoggerService }
+       ],
+  4. Open "dashboard.component.ts" and inject the LoggerService into the component's constructor.
+       private logger: LoggerService
+  5. Use the injected service to log a message in the "ngOnInit" method.
+       this.logger.log('Dashboard is using PlainLoggerService.');
+  6. Run the app and verify that the code works and that the DashboardComponent is using the PlainLoggerService.
+
+
+Creating Interceptors Lab
+-------------------------
+
+Create an interceptor to log the URL of each HTTP request sent to the server.
+
+  1. Create a new file in the "core" folder named "log-url.interceptor.ts".
+  2. Add the following code to the file that will log to the browser console the URL of each server request.
+  

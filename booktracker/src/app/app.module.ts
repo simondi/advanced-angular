@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -14,6 +14,7 @@ import { ReaderLibraryModule } from 'reader-library';
 import { LibraryComponent } from './library/library.component';
 import { InventoryComponent } from './inventory/inventory.component';
 import { ActivityLogComponent } from './activity-log/activity-log.component';
+import { AddHeaderInterceptor } from './core/add-header.interceptor';
 
 @NgModule({
   declarations: [
