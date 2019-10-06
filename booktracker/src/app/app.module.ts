@@ -14,7 +14,6 @@ import { ReaderLibraryModule } from 'reader-library';
 import { LibraryComponent } from './library/library.component';
 import { InventoryComponent } from './inventory/inventory.component';
 import { ActivityLogComponent } from './activity-log/activity-log.component';
-import { AddHeaderInterceptor } from './core/add-header.interceptor';
 
 @NgModule({
   declarations: [
