@@ -8,6 +8,6 @@ export class AuthService {
   constructor() { }
 
   isAdmin(): boolean {
-    return false;
+    return true;
   }
 }

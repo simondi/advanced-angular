@@ -24,7 +24,7 @@
         <div class="panel-body">
         <li *ngFor='let reader of allReaders'>
           {{reader.name}}
-          <a [routerLink]="['/editreader', reader.readerID]" (click)="logActivity('Editing reader ' + reader.name)">Edit</a>
+          <a [routerLink]="['/readers/editreader', reader.readerID]" (click)="logActivity('Editing reader ' + reader.name)">Edit</a>
           <a (click)="deleteReader(reader.readerID)"> Delete </a>
         </li>
         </div>
