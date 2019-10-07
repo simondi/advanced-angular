@@ -1,0 +1,34 @@
+Route Guards Lab
+----------------
+
+Create and Admin route guard that only allows administrators to navigate to the EditBook and EditReader routes.
+
+  1. Create a new AdminGuard with the Angular CLI.
+       ng g guard core/admin --implements CanActivate --skipTests=true
+  2. Open the new guard, add a constructor, and inject the Auth service into the constructor.
+       constructor(private authService: AuthService) {}
+  3. Update the "canActivate" method to return the return value of a call to the "isAdmin" method on the Auth service.
+       return this.authService.isAdmin();
+  4. Open "books-routing.module.ts" and update the editbook route to include the new guard as a "canActivate" guard.
+       canActivate: [AuthGuard]
+  5. Open "readers-routing.module.ts" and update the editreader route to include the new guard as a "canActivate" guard.
+       canActivate: [AuthGuard]
+  6. Run the app and verify that you cannot navigate to the edit routes if the AuthService is set to return false.
+
+
+Lazy Loading Lab
+----------------
+
+Reconfigure the "readers" feature module to be lazy loaded.
+
+  1. Remove the ReadersModule from the imports array in the main app module.
+  2. Add a new parent "readers" route inside "app-routing.module.ts".
+       { path: 'readers', loadChildren: () => import('./readers/readers.module').then(m => m.ReadersModule)}
+  3. Update the link to the EditReaderComponent inside "dashboard.component.html".
+       [routerLink]="['/readers/editreader'
+  4. Update the link to the AddReaderComponent inside "app.component.html".
+       [routerLink]="['/readers/addreader']"
+  5. Run the app and use the "Network" tab in the browser developer tools to verify the reader module is now lazy loaded.
+  6. Preload all lazy loaded modules by adding the following object literal as a parameter to the call to "forRoot" inside "app-routing.module.ts".
+       { preloadingStrategy: PreloadAllModules }
+  7. Run the app and verify that all lazy loaded modules are now pre-loaded.
