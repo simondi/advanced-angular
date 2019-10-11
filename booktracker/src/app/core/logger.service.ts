@@ -10,6 +10,6 @@ export class LoggerService {
   }
 
   error(message: string): void {
-    console.error(`ERROR: ${message}`);
+    console.error(`Simon's ERROR: ${message}`);
   }
 }

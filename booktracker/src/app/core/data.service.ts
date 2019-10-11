@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import { map, tap, catchError } from 'rxjs/operators';
 
 import { allBooks, allReaders } from 'src/app/data';
 import { Reader } from "src/app/models/reader";
@@ -45,6 +45,11 @@ export class DataService {
     return throwError(dataError);    
   }
 
+  getABookById(id: number): Book  {
+    // URL to get all books is /api/books
+    return allBooks.find(i => i.bookID == id);
+  }
+
   getBookById(id: number): Observable<Book> {
     return this.http.get<Book>(`/api/books/${id}`, {
       headers: new HttpHeaders({
@@ -52,7 +57,17 @@ export class DataService {
         'Authorization': 'my-token'
       })
     });
-  }  
+  }
+ 
+ 
+  getBookByAnId(id: number): Observable<Book> {
+    const url = `/api/books/${id}`;
+    return this.http.get <Book>(url)
+      .pipe(
+        tap(data => console.log('getBook LA: ' + JSON.stringify(data))),
+        catchError(this.handleError)
+      );
+  }
 
   getOldBookById(id: number): Observable<OldBook> {
     return this.http.get<Book>(`/api/books/${id}`)
@@ -82,6 +97,22 @@ export class DataService {
 
   deleteBook(bookID: number): Observable<void> {
     return this.http.delete<void>(`/api/books/${bookID}`);
+  }
+
+  private handleError(err) {
+    // in a real world app, we may send the server to some remote logging infrastructure
+    // instead of just logging it to the console
+    let errorMessage: string;
+    if (err.error instanceof ErrorEvent) {
+      // A client-side or network error occurred. Handle it accordingly.
+      errorMessage = `An error occurred: ${err.error.message}`;
+    } else {
+      // The backend returned an unsuccessful response code.
+      // The response body may contain clues as to what went wrong,
+      errorMessage = `Backend returned code ${err.status}: ${err.body.error}`;
+    }
+    console.error(err);
+    return throwError(errorMessage);
   }
   
 }

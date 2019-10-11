@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Reader } from "src/app/models/reader";
+import { BadgeService } from 'src/app/services/badge.service';
 
 @Component({
   selector: 'app-add-reader',
   templateUrl: './add-reader.component.html',
   styles: []
+  //, providers: [BadgeService]
 })
 export class AddReaderComponent implements OnInit {
 
